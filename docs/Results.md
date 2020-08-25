@@ -28,4 +28,16 @@ mock.Setup(p => p.Add(It.IsAny<int>(), It.IsAny<int>())
 mock.Setup(p => p.AddAsync(It.IsAny<int>(), It.IsAny<int>())
     .ReturnsAsync((int first, int second) => first + second);
 ```
-Note that the delegate must match the method signature and will be lazily invoked when the method is invoked. 
+Note that the delegate must match the method signature and will be lazily invoked when the method is invoked.
+
+## Returning `null`
+Due to how overload resolution works in C#, configuring a method or a property to return a `null` value requires some attention.
+
+In fact, simply typing `.Returns(null)` will cause a compiler error:
+> CS0121 The call is ambiguous between the following methods or properties: 'IReturns<TMock, TResult>.Returns(TResult)' and 'IReturns<TMock, TResult>.Returns(Func<TResult>)'
+
+To solve this, it's enough to cast `null` to the target type.
+```csharp
+var mock = new Mock<MyAbstractClass>();
+mock.Setup(p => p.Property).Returns(null as string);
+```
