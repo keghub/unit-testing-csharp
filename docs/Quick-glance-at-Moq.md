@@ -61,7 +61,7 @@ Initially, a new mock is created by specifying the mocked type. In this example,
 mock.Setup(p => p.DoSomething(It.IsAny<string>())).Returns(true);
 ```
 Next, the mock is configured by using the method `Setup` to specify incoming parameters and return values.
-- The `Setup` construct is used to configure expectations on the invocations of a method of the mocked type. At this time developers can set expectations on the incoming parameters too.
+- The `Setup` construct is used to configure expectations on the invocations of a method of the mocked type. At this time developers can set expectations on the incoming parameters too. In this case, Moq is instructed using the `It.IsAny<string>()` method to accept any string.
 - The `Returns` construct is used to specify the return values of the mocked method.
 
 In this case, Moq is instructed so that any invocation (i.e. any `string`) of the method `DoSomething` returns `true`. Thanks to Moq's strongly-typed API, it's impossible to configure a method with wrong types.
