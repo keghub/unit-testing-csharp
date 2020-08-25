@@ -45,7 +45,7 @@
 * [Data annotations](Data-annotations)
 * Advanced topics
   * [Default configurations](Default-configurations)
-  * [Building complex types](Building-complex-types)
+  * [Building custom types](Building-custom-types)
   * [Relays](Relays)
   * [Generators](Generators)
   * [Custom specimen builders](Custom-specimen-builders)
