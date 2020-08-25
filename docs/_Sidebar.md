@@ -47,8 +47,6 @@
   * [Default configurations](Default-configurations)
   * [Building custom types](Building-custom-types)
   * [Relays](Relays)
-  * [Generators](Generators)
-  * [Custom specimen builders](Custom-specimen-builders)
   * [Tricks](Tricks)
 * Extensions
   * [Idioms](Idioms)
