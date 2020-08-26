@@ -93,8 +93,8 @@ In the case the stream is expected to contain a random string, this setup can be
 ```csharp
 fixture.Register<string, Stream>((string data) => 
 {
-	var bytes = Encoding.UTF8.GetBytes(data);
-	return new MemoryStream(bytes);
+    var bytes = Encoding.UTF8.GetBytes(data);
+    return new MemoryStream(bytes);
 });
 ```
 
@@ -103,25 +103,25 @@ Finally, if the stream is expected to contain the serialized version of some dat
 ```csharp
 fixture.Register<Data, Stream>((Data data) => 
 {
-	data.Dump();
-	
-	var serializer = new JsonSerializer();
-	
-	var ms = new MemoryStream();
-	var sr = new StreamWriter(ms);
-	
-	serializer.Serialize(sr, data);
-	
-	sr.Flush();
-	
-	return ms;
+    data.Dump();
+    
+    var serializer = new JsonSerializer();
+    
+    var ms = new MemoryStream();
+    var sr = new StreamWriter(ms);
+    
+    serializer.Serialize(sr, data);
+    
+    sr.Flush();
+    
+    return ms;
 });
 
 public class Data
 {
-	public int Value { get; set; }
-	
-	public string Message { get; set; }
+    public int Value { get; set; }
+    
+    public string Message { get; set; }
 }
 ```
 
