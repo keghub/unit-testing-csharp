@@ -8,6 +8,7 @@
 ### NUnit
 * [Quick glance at NUnit](Quick-glance-at-NUnit)
 * [Creating a NUnit test project](Creating-a-NUnit-test-project)
+* [Executing the tests](Executing-a-NUnit-test-suite)
 * [Anatomy of a test fixture](Anatomy-of-a-test-fixture)
 * [Lifecycle of a test fixture](Lifecycle-of-a-test-fixture)
 * [Assertions](Assertions)
