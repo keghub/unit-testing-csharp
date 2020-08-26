@@ -14,14 +14,14 @@ Assuming a test class like the following one (for semplicity we will use `string
 ```csharp
 public class TestClass
 {
-	private readonly string _firstDependency;
-	private readonly string _secondDependency;
-	
-	public TestClass(string firstDependency, string secondDependency) 
-	{
-		_firstDependency = firstDependency ?? throw new ArgumentNullException(nameof(firstDependency));
-		_secondDependency = secondDependency ?? throw new ArgumentNullException(nameof(secondDependency));
-	}
+    private readonly string _firstDependency;
+    private readonly string _secondDependency;
+    
+    public TestClass(string firstDependency, string secondDependency) 
+    {
+        _firstDependency = firstDependency ?? throw new ArgumentNullException(nameof(firstDependency));
+        _secondDependency = secondDependency ?? throw new ArgumentNullException(nameof(secondDependency));
+    }
 
     public void DoSomething(string parameter)
     {
