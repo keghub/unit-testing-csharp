@@ -193,20 +193,20 @@ We can define our own `EqualityAssertion` as follows
 ```csharp
 public class EqualityAssertion : CompositeIdiomaticAssertion
 {
-	public EqualityAssertion(ISpecimenBuilder builder) : base(CreateChildrenAssertions(builder)) { }
-	
-	private static IEnumerable<IIdiomaticAssertion> CreateChildrenAssertions(ISpecimenBuilder builder)
-	{
-		yield return new EqualsNewObjectAssertion(builder);
-		
-		yield return new EqualsNewObjectAssertion(builder);
-		
-		yield return new EqualsSelfAssertion(builder);
-		
-		yield return new EqualsSuccessiveAssertion(builder);
-		
-		yield return new GetHashCodeSuccessiveAssertion(builder);
-	}
+    public EqualityAssertion(ISpecimenBuilder builder) : base(CreateChildrenAssertions(builder)) { }
+    
+    private static IEnumerable<IIdiomaticAssertion> CreateChildrenAssertions(ISpecimenBuilder builder)
+    {
+        yield return new EqualsNewObjectAssertion(builder);
+        
+        yield return new EqualsNewObjectAssertion(builder);
+        
+        yield return new EqualsSelfAssertion(builder);
+        
+        yield return new EqualsSuccessiveAssertion(builder);
+        
+        yield return new GetHashCodeSuccessiveAssertion(builder);
+    }
 }
 ```
 We can then create a simple unit test like the one below
@@ -214,11 +214,11 @@ We can then create a simple unit test like the one below
 [Test]
 public void Equality_is_correctly_implemented()
 {
-	var fixture = new Fixture();
-	
-	var assertion = fixture.Create<EqualityAssertion>();
-	
-	assertion.Verify(typeof(SampleValueObject));
+    var fixture = new Fixture();
+    
+    var assertion = fixture.Create<EqualityAssertion>();
+    
+    assertion.Verify(typeof(SampleValueObject));
 }
 ```
 
