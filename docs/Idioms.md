@@ -51,8 +51,11 @@ The snippet below will test that every parameter of the constructor is guarded a
 [Test]
 public void Constructor_is_guarded_against_nulls()
 {
+    // ARRANGE
     var fixture = new Fixture();
     var assertion = fixture.Create<GuardClauseAssertion>();
+
+    // ACT & ASSERT
     assertion.Verify(typeof(TestClass).GetConstructors());
 }
 ```
@@ -64,21 +67,30 @@ To be noted that without the help of the Idioms package, the developer would exp
 [Test]
 public void FirstDependency_is_required()
 {
+    // ARRANGE
     var fixture = new Fixture();
+
+    // ACT & ASSERT
     Assert.That(() => new TestClass(null, fixture.Create<string>()), Throws.ArgumentNullException);
 }
 
 [Test]
 public void SecondDependency_is_required()
 {
+    // ARRANGE
     var fixture = new Fixture();
+
+    // ACT & ASSERT
     Assert.That(() => new TestClass(fixture.Create<string>(), null), Throws.ArgumentNullException);
 }
 
 [Test]
 public void TestClass_can_be_instantiated()
 {
+    // ARRANGE
     var fixture = new Fixture();
+
+    // ACT & ASSERT
     Assert.That(() => new TestClass(fixture.Create<string>(), fixture.Create<string>()), Throws.Nothing);
 }
 ```
@@ -91,8 +103,11 @@ The same assertion can be used to verify the correct implementation of normal me
 [Test]
 public void DoSomething_is_guarded_against_nulls()
 {
+    // ARRANGE
     var fixture = new Fixture();
     var assertion = fixture.Create<GuardClauseAssertion>();
+
+    // ACT & ASSERT
     assertion.Verify(typeof(TestClass).GetMethod(nameof(TestClass.DoSomething)));
 }
 ```
@@ -124,8 +139,11 @@ The `ConstructorInitializedMemberAssertion` can be used to verify that the prope
 [Test]
 public void Properties_are_initialized_by_constructor()
 {
+    // ARRANGE
     var fixture = new Fixture();
     var assertion = fixture.Create<ConstructorInitializedMemberAssertion>();
+
+    // ACT & ASSERT
     assertion.Verify(typeof(TestClass));
 }
 ```
@@ -214,10 +232,11 @@ We can then create a simple unit test like the one below
 [Test]
 public void Equality_is_correctly_implemented()
 {
+    // ARRANGE
     var fixture = new Fixture();
-    
     var assertion = fixture.Create<EqualityAssertion>();
     
+    // ACT & ASSERT
     assertion.Verify(typeof(SampleValueObject));
 }
 ```
