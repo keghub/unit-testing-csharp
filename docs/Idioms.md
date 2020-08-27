@@ -4,6 +4,20 @@ Based on AutoFixture, the classes contained in the package [`AutoFixture.Idioms`
 
 The `AutoFixture.Idioms` package contains several assertions. Each assertion encapsulates a unit test that tests a specific expectation on the system under test.
 
+All assertions implement the interface `IIdiomaticAssertion`. This interface exposes a plethora of overloads of the `Verify` methods accepting everything from a set of assemblies down to a single member.
+
+The abstract class `IdiomaticAssertion` offers a basic implementation of all overloads but the ones at the end of the tree (constructors, methods, properties, fields).
+
+Given how the `IdiomaticAssertion` class works, developers can target a specific member or the whole type. It will be up to the author of the assertion to make sure that only the suitable members are tested.
+
+```csharp
+var fixture = new Fixture();
+var assertion = fixture.Create<MyFakeAssertion>();
+assertion.Verify(typeof(TestClass));
+assertion.Verify(typeof(TestClass).GetMethods());
+assertion.Verify(typeof(TestClass).GetMethod(nameof(TestClass.TestMethod)));
+```
+
 Here is a list of scenarios that can be accellerated by using assertions available in the `AutoFixture.Idioms` package.
 
 ## Guard a method against null values
@@ -147,3 +161,65 @@ Specifically, these assertions are available:
 - `GetHashCodeSuccessiveAssertion` verifies that `Object.GetHashCode` is implemented so that calling `x.GetHashCode()` several times returns always the same value.
 
 As of today, developers are left to write unit tests that prove that the symmetric and transitive properties are respected.
+
+Since most likely all the equality assertions needs to be checked, these can be combined into a single one specializing the `CompositeIdiomaticAssertion` abstract class.
+
+Let's consider this class as example
+
+```csharp
+public class SampleValueObject
+{
+    public string StringValue { get; set; }
+    
+    public int IntValue { get; set; }
+
+    public override bool Equals(object obj)
+    {
+        if (obj is SampleValueObject other)
+        {
+            return string.Equals(StringValue, other.StringValue, StringComparison.Ordinal) && Equals(IntValue, other.IntValue);
+        }
+
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(typeof(SampleValueObject), StringValue);
+    }
+}
+```
+We can define our own `EqualityAssertion` as follows
+```csharp
+public class EqualityAssertion : CompositeIdiomaticAssertion
+{
+	public EqualityAssertion(ISpecimenBuilder builder) : base(CreateChildrenAssertions(builder)) { }
+	
+	private static IEnumerable<IIdiomaticAssertion> CreateChildrenAssertions(ISpecimenBuilder builder)
+	{
+		yield return new EqualsNewObjectAssertion(builder);
+		
+		yield return new EqualsNewObjectAssertion(builder);
+		
+		yield return new EqualsSelfAssertion(builder);
+		
+		yield return new EqualsSuccessiveAssertion(builder);
+		
+		yield return new GetHashCodeSuccessiveAssertion(builder);
+	}
+}
+```
+We can then create a simple unit test like the one below
+```csharp
+[Test]
+public void Equality_is_correctly_implemented()
+{
+	var fixture = new Fixture();
+	
+	var assertion = fixture.Create<EqualityAssertion>();
+	
+	assertion.Verify(typeof(SampleValueObject));
+}
+```
+
+The main advantage of this approach is that developers can later on expand the `EqualityAssertion` class by addition additional child assertions.
