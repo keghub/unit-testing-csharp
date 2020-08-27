@@ -125,9 +125,3 @@ Since the second parameter of That can be any object implementing the `IResolveC
 Custom constraints should be used to glue NUnit with other libraries or to test specific aspects of the domain.
 
 Custom constraints should be avoided as a mean to combine multiple assertions.
-
-## Assumptions
-Assumptions are intended to express the state a test must be in to provide a meaningful result. They are functionally similar to assertions, however a unmet assumption will produce an _Inconclusive_ test result, as opposed to a Failure.
-
-Assumptions make use of the `Assume` static class.
-`Assume.That` has the same set of overloads as `Assert.That`. 

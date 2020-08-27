@@ -15,4 +15,4 @@ public void A_test_with_assumptions (
 }
 ```
 
-In the example above, test runs with invalid day/month/year combinations (like June 31st) are ignored.
+In the example above, test runs with invalid day/month/year combinations (like June 31st) are ignored. Please not that assumptions make use of the `Assume` static class. `Assume.That` has the same set of overloads as `Assert.That`.
