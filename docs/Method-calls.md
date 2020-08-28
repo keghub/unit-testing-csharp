@@ -69,6 +69,8 @@ mockSecond.InSequence(sequence).Setup(p => p.DoWithDate(DateTime.Today));
 ```
 When calls are configured within a sequence, Moq will not recognize calls out of sequence and, if operating in strict mode, will throw exceptions for non-configured calls.
 
+Please notice how all mocks are created specifying the parameter `MockBehavior.Strict`. More information on the concept of [mock behavior](Mock-customization#mock-behavior) later.
+
 ## Parameters passed by reference
 Normally, when invoking a method, references to objects are passed by value. This means that the method cannot change the target of the incoming variable. Sometimes this behavior is not desirable and for this reason developers can pass object references by reference to methods. This is achieved by using the `ref` keyword when declaring your method's arguments. [Here is a page on the official documentation regarding passing reference-type parameters by reference](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/passing-reference-type-parameters).
 
