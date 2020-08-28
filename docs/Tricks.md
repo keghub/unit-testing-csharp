@@ -83,7 +83,7 @@ fixture.Customize<Options>(c => c.With(p => p.InputStream, Stream.Null));
 
 In case the system under test expects some data out of the stream, the `MemoryStream` can be used to return the test data.
 
-This setup will return a stream containing a certain amount of bytes. The amount is controlled by the `Fixture.RepeatCount` property.
+This setup will return a stream containing a certain amount of bytes. The amount is controlled by the [`Fixture.RepeatCount`](Fixture#properties-of-ifixture) property.
 ```csharp
 fixture.Register<byte[], Stream>((byte[] data) => new MemoryStream(data));
 ```
@@ -102,9 +102,7 @@ Finally, if the stream is expected to contain the serialized version of some dat
 
 ```csharp
 fixture.Register<Data, Stream>((Data data) => 
-{
-    data.Dump();
-    
+{   
     var serializer = new JsonSerializer();
     
     var ms = new MemoryStream();
