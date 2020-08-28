@@ -3,7 +3,7 @@ Other than methods, interfaces and non-sealed classes can have properties whose 
 Like for methods, properties can be configured so that unit tests can behave reliably without the need of writing own fakes.
 
 ```csharp
-public abstract class
+public abstract class MyAbstractClass
 {
     public abstract string Text { get; set; }
 
