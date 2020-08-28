@@ -6,6 +6,7 @@ The NUnit glue library is contained in the [`AutoFixture.NUnit3`](https://www.nu
 
 The `AutoData` and `InlineAutoData` attributes sit at the center of the integration of AutoFixture with the NUnit pipeline. They take advantage of the same subsystem used to support [parameterized tests](Parameterized-tests) and extend it to feed anonymous objects as test parameters.
 
+### `AutoData` attribute
 Here is an example with the `AutoData` attribute.
 ```csharp
 public class Service
@@ -33,6 +34,8 @@ Specifically, the `AutoData` attribute took care of
   - use the fixture instance to generate a value 
   - pass the generated value to NUnit
 
+### `InlineAutoData` attribute
+Here is an example with the `InlineAutoData` attribute.
 ```csharp
 public class Service
 {
