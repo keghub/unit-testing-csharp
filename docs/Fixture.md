@@ -2,7 +2,7 @@ Despite its complex architecture, AutoFixture exposes a very simple programming 
 
 A `Fixture` uses a graph of `ISpecimenBuilder`s to serve requests to create auto-generated values (also known as Specimens or [Anonymous Variables](http://blogs.msdn.com/b/ploeh/archive/2008/11/17/anonymous-variables.aspx)).
 
-Developers can use its parameterless constructor to obtain an instance based on the default configuration. This configuration includes the wiring for the different parts of the framework and configurations for the most common types of the BCL.
+Developers can use its parameterless constructor to obtain an instance based on the default configuration. This configuration includes the wiring for the different parts of the framework and configurations for the most common types of the [Base Class Library](https://docs.microsoft.com/en-us/dotnet/standard/framework-libraries#base-class-libraries).
 
 ## The `IFixture` interface
 
