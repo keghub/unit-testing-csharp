@@ -40,10 +40,10 @@ public void Ping_invokes_DoSomething()
     // ARRANGE
     var mock = new Mock<IFoo>();
     mock.Setup(p => p.DoSomething(It.IsAny<string>())).Returns(true);
-    var service = new Service(mock.Object);
+    var sut = new Service(mock.Object);
 
     // ACT
-    service.Ping();
+    sut.Ping();
 
     // ASSERT
     mock.Verify(p => p.DoSomething("PING"), Times.Once());
@@ -67,14 +67,14 @@ Next, the mock is configured by using the method `Setup` to specify incoming par
 In this case, Moq is instructed so that any invocation (i.e. any `string`) of the method `DoSomething` returns `true`. Thanks to Moq's strongly-typed API, it's impossible to configure a method with wrong types.
 
 ```csharp
-var service = new Service(mock.Object);
+var sut = new Service(mock.Object);
 ```
 Once the mock is configured, the mocked object can be accessed or fed to the system under test's constructor using the `Object` property.
 
 This concludes the _Arrange_ phase of the test.
 
 ```csharp
-service.Ping();
+sut.Ping();
 ```
 This line represents the _Act_ phase of the test: the system under test is exerted by invoking its `Ping` method.
 
