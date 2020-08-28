@@ -2,7 +2,15 @@ Other than methods, interfaces and non-sealed classes can have properties whose 
 
 Like for methods, properties can be configured so that unit tests can behave reliably without the need of writing own fakes.
 
-The most basic configuration is the following
+```csharp
+public abstract class
+{
+    public abstract string Text { get; set; }
+
+    public abstract int Value { get; }
+}
+```
+Considering the abstract class above, the most basic configuration is the following
 ```csharp
 var mock = new Mock<MyAbstractClass>();
 mock.Setup(p => p.Text).Returns("Bar");
