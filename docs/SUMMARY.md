@@ -4,8 +4,6 @@
 
 ## Unit testing
 
----
-
 * [What to test](what-to-test.md)
 * [When to test](when-to-test.md)
 * [Qualities of a good unit test suite](qualities-of-a-good-unit-test-suite.md)
@@ -13,8 +11,6 @@
 * [Dealing with dependencies](dealing-with-dependencies.md)
 
 ## NUnit
-
----
 
 * [Quick glance at NUnit](quick-glance-at-nunit.md)
 * [Creating a NUnit test project](creating-a-nunit-test-project.md)
@@ -48,8 +44,6 @@
 * [Delegates](delegates.md)
 
 ## AutoFixture
-
----
 
 * [Quick glance at AutoFixture](quick-glance-at-autofixture.md)
 * [Fixture](fixture.md)
