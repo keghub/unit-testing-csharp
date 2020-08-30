@@ -4,58 +4,58 @@
 
 ## Unit testing
 
-## NUnit
+---
 
-## Moq
+* [What to test](what-to-test.md)
+* [When to test](when-to-test.md)
+* [Qualities of a good unit test suite](qualities-of-a-good-unit-test-suite.md)
+* [Qualities of a good unit test](qualities-of-a-good-unit-test.md)
+* [Dealing with dependencies](dealing-with-dependencies.md)
+
+## NUnit
 
 ---
 
-* [Quick-glance-at-AutoFixture](quick-glance-at-autofixture.md)
-* [Creating-a-NUnit-test-project](creating-a-nunit-test-project.md)
+* [Quick glance at NUnit](quick-glance-at-nunit.md)
+* [Creating a NUnit test project](creating-a-nunit-test-project.md)
+* [Anatomy of a test fixture](anatomy-of-a-test-fixture.md)
+* [Lifecycle of a test fixture](lifecycle-of-a-test-fixture.md)
 * [Assertions](assertions.md)
-* [Dealing-with-dependencies](dealing-with-dependencies.md)
-* [When-to-test](when-to-test.md)
-* [Mock-customization](mock-customization.md)
-* [Verifications](verifications.md)
-* [Multiple-interfaces](multiple-interfaces.md)
-* [Building-custom-types](building-custom-types.md)
-* [Results](results.md)
-* [Method-arguments](method-arguments.md)
-* [Quick-glance-at-NUnit](quick-glance-at-nunit.md)
-* [Default-configurations](default-configurations.md)
-* [Method-calls](method-calls.md)
-* [Create-and-Build](create-and-build.md)
-* [Callbacks](callbacks.md)
-* [Quick-glance-at-Moq](quick-glance-at-moq.md)
-* [Delegates](delegates.md)
-* [Mock-repository](mock-repository.md)
-* [Lifecycle-of-a-test-fixture](lifecycle-of-a-test-fixture.md)
-* [Parameterized-tests](parameterized-tests.md)
-* [Exceptions](exceptions.md)
-* [Describing-your-tests](describing-your-tests.md)
-* [Relays](relays.md)
-* [Fixture](fixture.md)
-* [Implicit-mocks](implicit-mocks.md)
-* [Data-annotations](data-annotations.md)
+* [Asynchronous executions](asynchronous-executions.md)
+* [Parameterized tests](parameterized-tests.md)
 * [Assumptions](assumptions.md)
-* [Qualities-of-a-good-unit-test-suite](qualities-of-a-good-unit-test-suite.md)
-* [Type-customization](type-customization.md)
-* [Home](home.md)
-* [\_Sidebar](_sidebar.md)
-* [Base-class](base-class.md)
-* [What-to-test](what-to-test.md)
+* [Describing your tests](describing-your-tests.md)
+
+## Moq
+
+* [Quick glance at Moq](quick-glance-at-moq.md)
+* [Method arguments](method-arguments.md)
+* [Method calls](method-calls.md)
+* [Properties](properties.md)
+* [Results](results.md)
+* [Callbacks](callbacks.md)
+* [Exceptions](exceptions.md)
 * [Events](events.md)
+* [Verifications](verifications.md)
+* [Base class](base-class.md)
+* [Mock customization](mock-customization.md)
+* [Implicit mocks](implicit-mocks.md)
+* [Mock repository](mock-repository.md)
+* [Custom matchers](custom-matchers.md)
+* [Multiple interfaces](multiple-interfaces.md)
+* [Protected members](protected-members.md)
+* [Generic methods](generic-methods.md)
+* [Delegates](delegates.md)
 
 ## AutoFixture
 
 ---
 
-* [Asynchronous-executions](asynchronous-executions.md)
-* [Anatomy-of-a-test-fixture](anatomy-of-a-test-fixture.md)
-* [Qualities-of-a-good-unit-test](qualities-of-a-good-unit-test.md)
-* [Custom-matchers](custom-matchers.md)
-* [Generic-methods](generic-methods.md)
-* [Properties](properties.md)
-* [\_Footer](_footer.md)
-* [Protected-members](protected-members.md)
+* [Quick glance at AutoFixture](quick-glance-at-autofixture.md)
+* [Fixture](fixture.md)
+* [Create and Build](create-and-build.md)
+* [Type customization](type-customization.md)
+* [Data annotations](data-annotations.md)
+* [Default configurations](default-configurations.md)
+* [Relays](relays.md)
 
