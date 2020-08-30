@@ -57,5 +57,6 @@
 * [Type customization](type-customization.md)
 * [Data annotations](data-annotations.md)
 * [Default configurations](default-configurations.md)
+* [Building custom types](building-custom-types.md)
 * [Relays](relays.md)
 
