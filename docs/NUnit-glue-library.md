@@ -44,7 +44,12 @@ public void Echo_returns_same_message()
     Assert.That(result, Is.EqualTo(message));
 }
 ```
-It's noticeable that in the first snippet there is no _Arrange_ phase. This is taken care by the `AutoData` attribute used to decorate the unit test.
+There are a few noticeable changes between the two snippets:
+- There is no _Arrange_ phase. 
+- The `AutoData` attribute decorator has been added the unit test.
+- There are new parameters passed to the unit test. 
+
+In fact, all of these changes are connected. By adding the `AutoData` attribute we have effectively moved the _Arrange_ phase out of the unit test and we now accept all the pieces we need to run the test as parameters.
 
 Specifically, the `AutoData` attribute took care of
 - creating an instance of `Fixture`,
