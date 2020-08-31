@@ -53,6 +53,11 @@ There are a few noticeable changes between the two snippets:
 
 In fact, all of these changes are connected. By adding the `AutoData` attribute we have effectively moved the _Arrange_ phase out of the unit test and we now accept all the pieces we need to run the test as parameters.
 
+The main advantages of doing so are:
+- shorter tests that are easier to scan and understand
+- focus on the _Act_ and _Assert_ phases rather than on _Arrange_
+- centralized configuration on how to create objects (see below)
+
 Specifically, the `AutoData` attribute took care of
 - creating an instance of `Fixture`,
 - inspecting the parameters of the unit test
@@ -84,6 +89,10 @@ public void Add_returns_sum_of_parameters(int first, int second, Service sut)
 }
 ```
 As shown above, unlike the `AutoData` attribute, the `InlineAutoData` attribute can be applied more than once on the same unit test. Each instance of the attribute will generate a new execution of the unit test.
+
+Specifically, the following executions will be performed by NUnit
+- `Add_returns_sum_of_parameters(1, <int>, <Service>)`
+- `Add_returns_sum_of_parameters(1, 10, <Service>)`
 
 Here is how the `InlineAutoData` works
 - for each instance of the `InlineAutoData`
@@ -154,7 +163,7 @@ Please notice the sequence of parameters of the rewritten unit test: the frozen 
 
 Another issue deriving from delegating AutoFixture of instantiating classes like system under tests is the loss of control on which constructor is picked. By default, AutoFixture picks the constructor with least parameters, but sometimes this is not the optimal choice.
 
-The `Greedy` and `Modest` attributes give the developer the power to instruct AutoFixture which constructor to select when constructing an object to be passed to NUnit. The `Greedy` attribute will instruct AutoFixture to use the constructor with the most parameters while the `Modest` attribute will instruct AutoFixture in the opposite way.
+The `Greedy` and `Modest` attributes give the developer the power to instruct AutoFixture which constructor to select when constructing an object to be passed to NUnit. The `Greedy` attribute will instruct AutoFixture to use the constructor with the most parameters while the `Modest` attribute will instruct AutoFixture to follow the default strategy and pick the constructor with least arguments. In both cases, copy constructors (constructors accepting the same type as single parameter) will be ignored.
 
 The `Greedy` attribute comes in hand when a service exposes a parameterless constructor with defaults that are not suited for testing.
 
@@ -190,6 +199,8 @@ public void GetOptionValue_returns_passed_value([Frozen] ServiceOptions options,
     Assert.That(actual, Is.EqualTo(options.Value));
 }
 ```
+
+If neither `Greedy` and `Modest` are able to select the desired constructor, developers will have to instruct AutoFixture via a customization.
 
 ## Customizing the fixture
 
@@ -280,3 +291,52 @@ public class Tests
     }
 }
 ```
+
+### Order of the parameters
+When using the `AutoData` and `InlineAutoData` attributes, the order of parameters of the unit tests assume a critical importance, especially when using the `Frozen` attribute.
+
+For this reason, it's suggested to sort the parameters following this order
+- explicit parameters for the `InlineAutoData` attribute (if any)
+- frozen parameters for the system under test,
+- the system under test
+- parameters to be used in the _Act_ phase.
+
+Here is an example
+
+```csharp
+public class StringListWrapper 
+{
+    private readonly IList<string> _list;
+
+    public ListWrapper (IList<string> list) => _list = list;
+
+    public void AddItem(string item, int times)
+    {
+        for (int i = 0; i < times; i++)
+        {
+            _list.Add(times);
+        }
+    }
+}
+
+[Test]
+[InlineAutoData(1)]
+[InlineAutoData(10)]
+[InlineAutoData]
+public void AddItem_adds_same_item_multiple_times(
+    int times, 
+    [Frozen] IList<string> innerList, 
+    StringListWrapper sut, 
+    string item
+)
+{
+    // ACT
+    sut.AddItem(item, times);
+
+    // ASSERT
+    Assert.That(innerList, Has.AtLeast(times).EqualTo(item));
+}
+```
+
+## Compatibility issues
+Unfortunately, the `AutoData` and `InlineAutoData` attributes are not compatible with the [attributes built into NUnit](Parameterized-tests) shown earlier.
