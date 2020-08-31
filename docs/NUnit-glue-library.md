@@ -1,5 +1,7 @@
 AutoFixture offers a glue library for NUnit 3.0. In AutoFixture's lingo, a glue library is a library that extend one library (in this case NUnit 3.0) with AutoFixture.
 
+By using this library, developers can speed up the process of creating unit tests and, while doing so, creating unit tests that are easier to read.
+
 The NUnit glue library is contained in the [`AutoFixture.NUnit3`](https://www.nuget.org/packages/AutoFixture.NUnit3/) NuGet package and is composed by classes that link AutoFixture into NUnit testing pipeline.
 
 The `AutoData` and `InlineAutoData` attributes sit at the center of the integration of AutoFixture with the NUnit pipeline. They take advantage of the same subsystem used to support [parameterized tests](Parameterized-tests) and extend it to feed anonymous objects as test parameters.
