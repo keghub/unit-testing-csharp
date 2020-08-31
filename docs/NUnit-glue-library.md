@@ -7,28 +7,15 @@ The `AutoData` and `InlineAutoData` attributes sit at the center of the integrat
 ## `AutoData` attribute
 The `AutoData` attribute is used to automatically generate values to be passed to the unit test, effectively making unit test authoring much faster.
 
-Here is an example with the `AutoData` attribute.
+Here is an example of a test written without taking advantage of the `AutoData` attribute.
+
+
 ```csharp
 public class Service
 {
     public string Echo(string message) => message;
 }
 
-[Test]
-[AutoData]
-public void Echo_returns_same_message(Service sut, string message)
-{
-    // ACT
-    var result = sut.Echo(message);
-
-    // ASSERT
-    Assert.That(result, Is.EqualTo(message));
-}
-```
-
-The unit test above can be converted to the equivalent without taking advantage of the `AutoData` attribute.
-
-```csharp
 [Test]
 public void Echo_returns_same_message()
 {
@@ -37,6 +24,21 @@ public void Echo_returns_same_message()
     var sut = fixture.Create<Service>();
     var message = fixture.Create<string>();
 
+    // ACT
+    var result = sut.Echo(message);
+
+    // ASSERT
+    Assert.That(result, Is.EqualTo(message));
+}
+```
+
+By using the `AutoData` attribute, the unit test above can be converted as follows.
+
+```csharp
+[Test]
+[AutoData]
+public void Echo_returns_same_message(Service sut, string message)
+{
     // ACT
     var result = sut.Echo(message);
 
