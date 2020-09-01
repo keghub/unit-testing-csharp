@@ -259,7 +259,7 @@ public class CustomInlineAutoDataAttribute : InlineAutoDataAttribute
 
 With these attribute in place, it is possible to create lean tests without giving up on the customization capabilities of AutoFixture by simply using the new attributes instead of `AutoData` and `InlineAutoData`.
 
-### Dealing with multiple customizations
+## Dealing with multiple customizations
 
 A problem with this approach is that unit tests requiring different customizations will not be able to use the same custom attribute. In this case, developers must choose between two options:
 
@@ -305,7 +305,7 @@ public class Tests
 }
 ```
 
-### Order of the parameters
+## Order of the parameters
 
 When using the `AutoData` and `InlineAutoData` attributes, the order of parameters of the unit tests assume a critical importance, especially when using the `Frozen` attribute.
 
