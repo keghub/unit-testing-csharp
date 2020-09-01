@@ -53,4 +53,7 @@
 * [Default configurations](default-configurations.md)
 * [Building custom types](building-custom-types.md)
 * [Relays](relays.md)
+* [Tricks](tricks.md)
+* [Idioms](idioms.md)
+* [NUnit](nunit-glue-library.md)
 
