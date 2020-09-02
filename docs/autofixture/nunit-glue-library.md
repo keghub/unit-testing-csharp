@@ -323,7 +323,7 @@ public class StringListWrapper
 {
     private readonly IList<string> _list;
 
-    public ListWrapper (IList<string> list) => _list = list;
+    public StringListWrapper (IList<string> list) => _list = list;
 
     public void AddItem(string item, int times)
     {
