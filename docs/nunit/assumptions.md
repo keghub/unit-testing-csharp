@@ -1,6 +1,6 @@
 # Assumptions
 
-Sometimes, unit tests can be relevant only when certain conditions are met. This is often the case with [parameterized tests](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Parameterized-tests/README.md).
+Sometimes, unit tests can be relevant only when certain conditions are met. This is often the case with [parameterized tests](./parameterized-tests.md).
 
 In these cases, mapping these conditions as assertions would mark as failed tests that simply received invalid data. To obviate this issue, NUnit offers the possibility to make _assumptions_ on the incoming data. Unlike assertions, unmet assumptions make the runner mark the test as _Invalid_ instead of _Failed_.
 
