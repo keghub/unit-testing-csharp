@@ -55,5 +55,4 @@
 * [Relays](autofixture/relays.md)
 * [Tricks](autofixture/tricks.md)
 * [Idioms](autofixture/idioms.md)
-* [NUnit](autofixture/nunit-glue-library.md)
-
+* [Integration with NUnit](autofixture/nunit-glue-library.md)
