@@ -1,6 +1,6 @@
 # Unit testing in C\#
 
-### The need for automated testing
+## The need for automated testing
 
 Software systems are complex creatures. They are composed of many small components working together to accomplish a greater common goal.
 
@@ -16,7 +16,7 @@ Unit tests focus on the behavior of individual components by asserting the expec
 
 As the name says, integration tests focus on the integration between multiple components by asserting the expected output of the collaboration of multiple components.
 
-### Objectives of this course
+## Objectives of this course
 
 This course focuses on the creation of suites of unit tests aiming at asserting the known behavior of .NET components.
 
@@ -28,3 +28,6 @@ After having learned how to use these libraries, we will discuss some advanced s
 
 Finally, we will look at what code coverage means and how we should look at this metric.
 
+## License
+
+This course is offered under a MIT license that can be consulted in the [GitHub repository](https://github.com/emgdev/unit-testing-csharp) or at [this address](https://raw.githubusercontent.com/emgdev/unit-testing-csharp/master/LICENSE).
