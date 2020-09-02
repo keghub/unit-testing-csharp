@@ -2,7 +2,7 @@
 
 Moq is a mocking framework built to facilitate the testing of components with dependencies.
 
-As shown earlier, [dealing with dependencies](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Dealing-with-dependencies/README.md) could be cumbersome because it requires the creation of test doubles like fakes.
+As shown earlier, [dealing with dependencies](../unit-testing/dealing-with-dependencies.md) could be cumbersome because it requires the creation of test doubles like fakes.
 
 Moq makes the creation of fakes redundant by using dynamically generated types. Its API is built around lambda constructs to ensure tests are strongly typed, easy to read and quick to write. It also provides a string-based API to mock protected methods.
 

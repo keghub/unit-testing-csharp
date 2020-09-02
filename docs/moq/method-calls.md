@@ -84,7 +84,7 @@ mockSecond.InSequence(sequence).Setup(p => p.DoWithDate(DateTime.Today));
 
 When calls are configured within a sequence, Moq will not recognize calls out of sequence and, if operating in strict mode, will throw exceptions for non-configured calls.
 
-Please notice how all mocks are created specifying the parameter `MockBehavior.Strict`. More information on the concept of [mock behavior](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Mock-customization/README.md#mock-behavior) later.
+Please notice how all mocks are created specifying the parameter `MockBehavior.Strict`. More information on the concept of [mock behavior](./mock-customization.md#mock-behavior) later.
 
 ## Parameters passed by reference
 

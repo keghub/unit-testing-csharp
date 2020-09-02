@@ -1,6 +1,6 @@
 # Delegates
 
-Moq can be used to create fake delegates. Mocks faking delegates can be configured like normal methods to [return a value](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Results/README.md), [execute a callback](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Callbacks/README.md) or [throw an exception](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Exceptions/README.md).
+Moq can be used to create fake delegates. Mocks faking delegates can be configured like normal methods to [return a value](./results.md), [execute a callback](./callbacks.md) or [throw an exception](./exceptions.md).
 
 The snippets below are based on the following type
 
@@ -27,7 +27,7 @@ mock.Setup(p => p(It.IsAny<string>()))
     .Returns(42);
 ```
 
-Finally, Moq can generate [implicit mocks](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Implicit-mocks/README.md) for delegates too.
+Finally, Moq can generate [implicit mocks](./implicit-mocks.md) for delegates too.
 
 ```csharp
 var parser = Mock.Of<ParseString>();
