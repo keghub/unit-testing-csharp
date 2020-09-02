@@ -6,7 +6,7 @@ By using this library, developers can speed up the process of creating unit test
 
 The NUnit glue library is contained in the [`AutoFixture.NUnit3`](https://www.nuget.org/packages/AutoFixture.NUnit3/) NuGet package and is composed by classes that link AutoFixture into NUnit testing pipeline.
 
-The `AutoData` and `InlineAutoData` attributes sit at the center of the integration of AutoFixture with the NUnit pipeline. They take advantage of the same subsystem used to support [parameterized tests](https://github.com/emgdev/unit-testing-csharp/tree/62c15051244af213168e6641993597ce74b283e5/docs/Parameterized-tests/README.md) and extend it to feed anonymous objects as test parameters.
+The `AutoData` and `InlineAutoData` attributes sit at the center of the integration of AutoFixture with the NUnit pipeline. They take advantage of the same subsystem used to support [parameterized tests](../nunit/parameterized-tests.md) and extend it to feed anonymous objects as test parameters.
 
 ## `AutoData` attribute
 
@@ -114,7 +114,7 @@ Here is how the `InlineAutoData` works
     * if a value was provided in the constructor of the attribute, pass it to NUnit
     * otherwise, use the fixture instance to generate a value and pass it to NUnit
 
-It is important to note that the `InlineAutoData` attribute suffers of the same restrictions of the [`TestCase` attribute](https://github.com/emgdev/unit-testing-csharp/tree/62c15051244af213168e6641993597ce74b283e5/docs/Parameterized-tests/README.md#testcase-attribute) regarding which types can be used in the attribute. Unfortunately, unlike the `TestCase` attribute, the `InlineAutoData` attribute doesn't have an equivalent attribute pointing at a method like the `TestCaseSource` attribute.
+It is important to note that the `InlineAutoData` attribute suffers of the same restrictions of the [`TestCase` attribute](../nunit/parameterized-tests.md#testcase-attribute) regarding which types can be used in the attribute. Unfortunately, unlike the `TestCase` attribute, the `InlineAutoData` attribute doesn't have an equivalent attribute pointing at a method like the `TestCaseSource` attribute.
 
 ## `Frozen` attribute
 
@@ -154,7 +154,7 @@ public void Add_should_add_item_to_underlying_list()
 
 Unfortunately, simply decorating the test with the `AutoData` attribute and convert the variables `list`, `sut` and `item` as parameters will not work because the list served as parameter and the one served to the constructor of `Service` will not be the same instance.
 
-The `Frozen` article solves this issue. By leveraging the [`Freeze`](https://github.com/emgdev/unit-testing-csharp/tree/62c15051244af213168e6641993597ce74b283e5/docs/Type-customization/README.md#freeze) extension method, it creates an instance of a given type and it uses it to serve successive requests. This attribute is used by decorating which parameter of the unit test needs to be generated using the `Freeze` method and it works with test decorated by both the `AutoData` and `InlineAutoData` attributes.
+The `Frozen` article solves this issue. By leveraging the [`Freeze`](./type-customization.md#freeze) extension method, it creates an instance of a given type and it uses it to serve successive requests. This attribute is used by decorating which parameter of the unit test needs to be generated using the `Freeze` method and it works with test decorated by both the `AutoData` and `InlineAutoData` attributes.
 
 With the help of the `Frozen` attribute, we can rewrite the test as follow
 
@@ -355,5 +355,5 @@ public void AddItem_adds_same_item_multiple_times(
 
 ## Compatibility issues
 
-Unfortunately, the `AutoData` and `InlineAutoData` attributes are not compatible with the [attributes built into NUnit](https://github.com/emgdev/unit-testing-csharp/tree/62c15051244af213168e6641993597ce74b283e5/docs/Parameterized-tests/README.md) shown earlier.
+Unfortunately, the `AutoData` and `InlineAutoData` attributes are not compatible with the [attributes built into NUnit](../nunit/parameterized-tests.md) shown earlier.
 

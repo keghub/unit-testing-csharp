@@ -1,6 +1,6 @@
 # Type customization
 
-The same fluent API used to specify [how to build an anonymous variable](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Create-and-Build/README.md#Build) can be used to instruct AutoFixture how to create every instance of the same type.
+The same fluent API used to specify [how to build an anonymous variable](./create-and-build.md#Build) can be used to instruct AutoFixture how to create every instance of the same type.
 
 This can be done using the `Customize<T>` method of `IFixture`.
 
@@ -52,7 +52,7 @@ In the snippet above, the two commands are equivalent.
 fixture.Register<IService>(() => new FakeService());
 ```
 
-This approach works pretty well with simple scenarios \(with simple or no dependencies\). To handle more complex scenarios, it's better to use [relays](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Relays/README.md).
+This approach works pretty well with simple scenarios \(with simple or no dependencies\). To handle more complex scenarios, it's better to use [relays](./relays.md).
 
 Finally, the generator method can also return a subtype of the registered type.
 

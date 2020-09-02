@@ -26,5 +26,5 @@ public void Fixture_should_return_relayed_type()
 }
 ```
 
-AutoFixture uses relays to support well-known interfaces like `IList<T>`. The [collection interfaces](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Default-configurations/README.md#collections) are forwarded to their most common implementation.
+AutoFixture uses relays to support well-known interfaces like `IList<T>`. The [collection interfaces](./default-configurations.md#collections) are forwarded to their most common implementation.
 

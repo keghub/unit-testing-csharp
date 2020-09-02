@@ -85,7 +85,7 @@ fixture.Customize<Options>(c => c.With(p => p.InputStream, Stream.Null));
 
 In case the system under test expects some data out of the stream, the `MemoryStream` can be used to return the test data.
 
-This setup will return a stream containing a certain amount of bytes. The amount is controlled by the [`Fixture.RepeatCount`](https://github.com/emgdev/unit-testing-csharp/tree/62c15051244af213168e6641993597ce74b283e5/docs/Fixture/README.md#properties-of-ifixture) property.
+This setup will return a stream containing a certain amount of bytes. The amount is controlled by the [`Fixture.RepeatCount`](./fixture.md#properties-of-ifixture) property.
 
 ```csharp
 fixture.Register<byte[], Stream>((byte[] data) => new MemoryStream(data));
