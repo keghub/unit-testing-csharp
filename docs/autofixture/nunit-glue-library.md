@@ -154,7 +154,7 @@ public void Add_should_add_item_to_underlying_list()
 
 Unfortunately, simply decorating the test with the `AutoData` attribute and convert the variables `list`, `sut` and `item` as parameters will not work because the list served as parameter and the one served to the constructor of `Service` will not be the same instance.
 
-The `Frozen` article solves this issue. By leveraging the [`Freeze`](./type-customization.md#freeze) extension method, it creates an instance of a given type and it uses it to serve successive requests. This attribute is used by decorating which parameter of the unit test needs to be generated using the `Freeze` method and it works with test decorated by both the `AutoData` and `InlineAutoData` attributes.
+The `Frozen` attribute solves this issue. By leveraging the [`Freeze`](./type-customization.md#freeze) extension method, it creates an instance of a given type and it uses it to serve successive requests. This attribute is used by decorating which parameter of the unit test needs to be generated using the `Freeze` method and it works with test decorated by both the `AutoData` and `InlineAutoData` attributes.
 
 With the help of the `Frozen` attribute, we can rewrite the test as follow
 
