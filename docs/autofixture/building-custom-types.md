@@ -2,7 +2,7 @@
 
 Creating instances of custom types is where AutoFixture really shines.
 
-By mixing the [default configurations](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Default-configurations/README.md) and reflection, AutoFixture is able to generate instances of almost every type, even without an explicit configuration.
+By mixing the [default configurations](./default-configurations.md) and reflection, AutoFixture is able to generate instances of almost every type, even without an explicit configuration.
 
 ```csharp
 var fixture = new Fixture();

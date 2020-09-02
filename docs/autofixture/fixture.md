@@ -28,7 +28,7 @@ Developers can use its parameterless constructor to obtain an instance based on 
 
 ## The `ISpecimenBuilder` interface
 
-On top of `IFixture`, `Fixture` implements the `ISpecimenBuilder` interface. This interface exposes the `Create` method that is used by more user-friendly versions of this method. More information about the [specimen builders](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Specimen-builders/README.md) and the [`Create` method](https://github.com/emgdev/unit-testing-csharp/tree/c1e06f02ecb67288bafa6a2fe26e4d233f910b0e/docs/Create-and-Build/README.md) will follow.
+On top of `IFixture`, `Fixture` implements the `ISpecimenBuilder` interface. This interface exposes the `Create` method that is used by more user-friendly versions of this method. More information about the [specimen builders](./expanding-autofixture.md) and the [`Create` method](./create-and-build.md) will follow.
 
 ## Extension methods
 
