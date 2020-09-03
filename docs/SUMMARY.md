@@ -9,6 +9,7 @@
 * [Qualities of a good unit test suite](unit-testing/qualities-of-a-good-unit-test-suite.md)
 * [Qualities of a good unit test](unit-testing/qualities-of-a-good-unit-test.md)
 * [Dealing with dependencies](unit-testing/dealing-with-dependencies.md)
+* [Running the tests](unit-testing/running-the-tests.md)
 
 ## NUnit
 
