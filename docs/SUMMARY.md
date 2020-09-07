@@ -57,3 +57,4 @@
 * [Tricks](autofixture/tricks.md)
 * [Idioms](autofixture/idioms.md)
 * [Integration with NUnit](autofixture/nunit-glue-library.md)
+* [Integration with Moq](autofixture/moq-glue-library.md)
