@@ -256,3 +256,47 @@ public void Equality_is_correctly_implemented()
 
 The main advantage of this approach is that developers can later on expand the `EqualityAssertion` class by addition additional child assertions.
 
+### Equality comparers
+
+When it's not possible to customize the behavior of the class, or simply it's preferrable to have multiple equality comparison strategies (like the case of the different string comparers), developers can create their own comparers by implementing the interface `IEqualityComparer<T>`.
+
+This interface exposes two methods, `bool Equals(T,T)` and `int GetHashCode(T)`, and the same rules applying for value equality need to be followed when implementing this interface.
+
+Starting from version 4.14.0, AutoFixture includes a `EqualityComparerAssertion` that can be used to validate the implementation of the custom equality comparer.
+
+Let's consider the following equality comparer for the class `SampleValueObject` displayed above
+```csharp
+public class SampleValueObjectEqualityComparer : IEqualityComparer<SampleValueObject>
+{
+	public bool Equals(SampleValueObject x, SampleValueObject y)
+	{
+		if (x is null && y is null) return true;
+		
+		if (x is null ^ y is null) return false;
+		
+		return string.Equals(x.StringValue, y.StringValue) && Equals(x.IntValue, y.IntValue);
+	}
+
+	public int GetHashCode(SampleValueObject obj)
+	{
+		_ = obj ?? throw new ArgumentNullException(nameof(obj));
+		
+		return HashCode.Combine(typeof(SampleValueObject), obj.StringValue, obj.IntValue);
+	}
+}
+```
+
+By using the `EqualityComparerAssertion`, we can test all the equality properties listed above in a single unit test.
+
+```csharp
+[Test]
+public void Equality_comparer_is_correctly_implemented()
+{
+    //ARRANGE
+    var fixture = new Fixture();
+    var assertion = fixture.Create<EqualityComparerAssertion>();
+
+    // ACT & ASSERT
+    assertion.Verify(typeof(SampleValueObjectEqualityComparer));
+}
+```
