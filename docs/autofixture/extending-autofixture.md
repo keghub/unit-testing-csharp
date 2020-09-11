@@ -99,7 +99,7 @@ When executing the snippet above, the following will be printed on the standard 
   Created: SampleValueObject
 ```
 
-Behaviors implement the `ISpecimenBuilderTransformation` interface that looks like
+Behaviors implement the `ISpecimenBuilderTransformation` interface. This is what the interface looks like
 
 ```csharp
 public interface ISpecimenBuilderTransformation
