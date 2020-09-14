@@ -68,7 +68,7 @@ public void Fixture_uses_specimen_builder_to_create_value()
 
 ## Behaviors
 
-Behaviors are decorators that are executed for each step of the chain of responsibility used to create values.
+Behaviors are decorators that are executed in each step of the chain of responsibility used to create values.
 
 For example, the `TracingBehavior` can be used to track the chain of calls used to serve a certain request.
 
@@ -109,3 +109,47 @@ public interface ISpecimenBuilderTransformation
 ```
 
 ## Customizations
+
+Finally, AutoFixture uses classes implementing the `ICustomization` interface to wrap in a single place multiple changes to the fixture configuration.
+
+The `ICustomization` interface exposes a single method, `Customize`, that accepts a fixture and applies configuration changes to it.
+
+```csharp
+public interface ICustomization
+{
+    void Customize(IFixture fixture);
+}
+```
+
+For example, the customization below injects values for `int` and `string`.
+
+```csharp
+public class TestCustomization : ICustomization
+{
+    public void Customize(IFixture fixture)
+    {
+        fixture.Inject("Hello world");
+        
+        fixture.Inject(42);
+    }
+}
+```
+
+The customization can then be used as it follows.
+
+```csharp
+[Test]
+public void TestCustomization_injects_constant_values()
+{
+    // ARRANGE
+    var fixture = new Fixture();
+    fixture.Customize(new TestCustomization());
+
+    // ACT
+    var testValue = fixture.Create<(int value, string message)>();
+
+    // ASSERT
+    Assert.That(testValue.value, Is.EqualTo(42));
+    Assert.That(testValue.message, Is.EqualTo("Hello world"));
+}
+```
