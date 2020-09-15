@@ -26,24 +26,24 @@ Let's consider the following service as an example
 ```csharp
 public interface IDependency
 {
-	void SendMessage(string message);
+    void SendMessage(string message);
 }
 
 public class Service
 {
-	private readonly IDependency _dependency;
-	private readonly ILogger<Service> _logger;
+    private readonly IDependency _dependency;
+    private readonly ILogger<Service> _logger;
 
-	public Service (IDependency dependency, ILogger<Service> logger)
-	{
-		_dependency = dependency ?? throw new ArgumentNullException(nameof(dependency));
-		_logger = logger ?? throw new ArgumentNullException(nameof(logger));
-	}
+    public Service (IDependency dependency, ILogger<Service> logger)
+    {
+        _dependency = dependency ?? throw new ArgumentNullException(nameof(dependency));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    }
 
-	public void DoSomething(string message)
-	{
-		_dependency.SendMessage(message);
-	}
+    public void DoSomething(string message)
+    {
+        _dependency.SendMessage(message);
+    }
 }
 ```
 
@@ -53,18 +53,18 @@ Here is a unit test testing that, when invoking `DoSomething`, the message is fo
 [Test]
 public void DoSomething_forwards_message_to_Dependency()
 {
-	// ARRANGE
-	var fixture = new Fixture();
-	var mockDependency = new Mock<IDependency>();
-	var message = fixture.Create<string>();
+    // ARRANGE
+    var fixture = new Fixture();
+    var mockDependency = new Mock<IDependency>();
+    var message = fixture.Create<string>();
 
-	var sut = new Service(mockDependency.Object, Mock.Of<ILogger<IDependency>>());
+    var sut = new Service(mockDependency.Object, Mock.Of<ILogger<IDependency>>());
 
-	// ACT
-	sut.DoSomething(message);
+    // ACT
+    sut.DoSomething(message);
 
-	// ASSERT
-	mockDependency.Verify(p => p.SendMessage(message), Times.Once());
+    // ASSERT
+    mockDependency.Verify(p => p.SendMessage(message), Times.Once());
 }
 ```
 
@@ -74,11 +74,11 @@ The same test can be rewritten using the `CustomAutoDataAttribute` shown above
 [Test, CustomAutoDataAttribute]
 public void DoSomething_forwards_message_to_Dependency([Frozen] IDependency dependency, Service sut, string message)
 {
-	// ACT
-	sut.DoSomething(message);
+    // ACT
+    sut.DoSomething(message);
 
-	// ASSERT
-	Mock.Get(dependency).Verify(p => p.SendMessage(message), Times.Once());
+    // ASSERT
+    Mock.Get(dependency).Verify(p => p.SendMessage(message), Times.Once());
 }
 ```
 
