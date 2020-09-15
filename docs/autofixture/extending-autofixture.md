@@ -68,7 +68,9 @@ public void Fixture_uses_specimen_builder_to_create_value()
 
 ## Behaviors
 
-Behaviors are decorators that are executed in each step of the chain of responsibility used to create values.
+Together with specimen builders, behaviors are part of the graph used to represent the chain of responsibility used to create values.
+
+Unlike the specimen builders, that can be seen as the leaves of the graph and therefore can only respond to a request, behaviors have access to both the request and the response and can act or modify them.
 
 For example, the `TracingBehavior` can be used to track the chain of calls used to serve a certain request.
 
