@@ -18,7 +18,7 @@ public interface ISpecimenBuilder
 
 A request can be virtually of any type but most commonly they are reflection types like `Type`, `PropertyInfo`, `ParameterInfo` and so on. The AutoFixture kernel uses a [chain of responsibility](http://en.wikipedia.org/wiki/Chain-of-responsibility_pattern) to explore all the available builders and stop when a builder able to satisfy the request is met, directly or indirectly.
 
-The context parameter represents the context in which the request is being handled. It's interface exposes only the `Resolve` method that is used to invoke the chain responsibility to generate a value.
+The context parameter represents the context in which the request is being handled. It's interface exposes only the `Resolve` method that is used to invoke AutoFixtures chain of responsibility to generate a value.
 
 Here is an example of a specimen builder used to create instances of a specific type.
 
