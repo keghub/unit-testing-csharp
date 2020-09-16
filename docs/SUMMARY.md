@@ -59,3 +59,7 @@
 * [Integration with NUnit](autofixture/nunit-glue-library.md)
 * [Integration with Moq](autofixture/moq-glue-library.md)
 * [Combining AutoFixture with NUnit and Moq](autofixture/combining-autofixture-with-nunit-and-moq.md)
+
+## Advanced topics
+
+* [Testing HttpClient](advanced-topics/testing-httpclient.md)
