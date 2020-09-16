@@ -45,8 +45,8 @@ public abstract class AbstractType
 Once a fixture is enriched with `AutoMoqCustomization`, developers can use it to request anonymous instances of non-concrete types.
 
 This can be done in these ways.
-- By requesting directly for the type. In this case an [implicit mock](../moq/implicit-mocks.md) will be returned.
-- By requesting for a mock of the type
+- By requesting directly the type to be mocked. In this case an [implicit mock](../moq/implicit-mocks.md) will be returned.
+- By requesting for a mock of the type. In this case an instance of `Mock<T>` will be returned.
 
 It is important to note that [_freezing_](./type-customization.md#freeze) is supported in both cases.
 
