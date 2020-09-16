@@ -187,7 +187,7 @@ Specifically, these assertions are available:
 * `EqualsSuccessiveAssertion` verifies that `Object.Equals` is implemented so that calling `x.Equals(y)` several times returns always the same value,
 * `GetHashCodeSuccessiveAssertion` verifies that `Object.GetHashCode` is implemented so that calling `x.GetHashCode()` several times returns always the same value.
 
-As of today, developers are left to write unit tests that prove that the symmetric and transitive properties are respected. [This package](https://www.nuget.org/packages/EqualityTests/) contains the missing tests. Since it's based on AutoFixture 3.36, it might not work with newer versions but developers can take inspiration from [its source code](https://github.com/baks/EqualityTests).
+As of today, developers are left to write unit tests that prove that the symmetric and transitive properties are respected but they can be found in [this package](https://www.nuget.org/packages/EqualityTests/). Since this package is based on AutoFixture 3.36, it might not work with newer versions but developers can take inspiration from [its source code](https://github.com/baks/EqualityTests).
 
 Since most likely all the equality assertions needs to be checked, these can be combined into a single one specializing the `CompositeIdiomaticAssertion` abstract class.
 
