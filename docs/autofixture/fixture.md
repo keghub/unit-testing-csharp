@@ -28,7 +28,7 @@ Developers can use its parameterless constructor to obtain an instance based on 
 
 ## The `ISpecimenBuilder` interface
 
-On top of `IFixture`, `Fixture` implements the `ISpecimenBuilder` interface. This interface exposes the `Create` method that is used by more user-friendly versions of this method. More information about the [specimen builders](./expanding-autofixture.md) and the [`Create` method](./create-and-build.md) will follow.
+On top of `IFixture`, `Fixture` implements the `ISpecimenBuilder` interface. This interface exposes the `Create` method that is used by more user-friendly versions of this method. More information about the [specimen builders](./extending-autofixture.md#specimen-builders) and the [`Create` method](./create-and-build.md) will follow.
 
 ## Extension methods
 
