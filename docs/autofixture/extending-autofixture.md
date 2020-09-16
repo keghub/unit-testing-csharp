@@ -130,6 +130,8 @@ public class TestCustomization : ICustomization
 {
     public void Customize(IFixture fixture)
     {
+        fixture.Customize<SampleValueObject>(o => o.With(p => p.StringValue, "FooBar"));
+
         fixture.Inject("Hello world");
         
         fixture.Inject(42);
@@ -148,10 +150,27 @@ public void TestCustomization_injects_constant_values()
     fixture.Customize(new TestCustomization());
 
     // ACT
+    var testValue = fixture.Create<(int value, string message)>();
+
+    // ASSERT
+    Assert.That(testValue.value, Is.EqualTo(42));
+    Assert.That(testValue.message, Is.EqualTo("Hello world"));
+}
+
+[Test]
+public void TestCustomization_mixes_values()
+{
+    // ARRANGE
+    var fixture = new Fixture();
+    fixture.Customize(new TestCustomization());
+
+    // ACT
     var testValue = fixture.Create<SampleValueObject>();
 
     // ASSERT
-    Assert.That(testValue.IntValue, Is.EqualTo(42));
-    Assert.That(testValue.StringValue, Is.EqualTo("Hello world"));
+    Assert.That(testValue.value, Is.EqualTo(42));
+    Assert.That(testValue.message, Is.EqualTo("FooBar"));
 }
 ```
+
+In the snippet above you can see how AutoFixture uses the injected values together with the ones specified in the customization when constructing an instance of `SampleValueObject`.
