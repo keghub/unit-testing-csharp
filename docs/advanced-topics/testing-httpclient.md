@@ -193,7 +193,7 @@ public class HttpAutoDataAttribute : AutoDataAttribute
 
         fixture.AddMockHttp();
 
-		fixture.Customize(new AutoMoqCustomization { ConfigureMembers = true, GenerateDelegates = true });
+        fixture.Customize(new AutoMoqCustomization { ConfigureMembers = true, GenerateDelegates = true });
 
         return fixture;
     }
