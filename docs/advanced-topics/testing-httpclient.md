@@ -179,7 +179,7 @@ public async Task GetStringAsync_uses_HttpClient_to_get_content_from_given_URI()
 }
 ```
 
-Quite interestingly, when converting the unit test above into one leveraging the `AutoData` attribute, we get the exact same unit test as the complexity of `IHttpClientFactory.CreateClient` is handled automatically by Moq, once AutoMoq is configured accordingly.
+Quite interestingly, when converting the unit test above into one leveraging the `AutoData` attribute, we get the exact same unit test as our example with a `HttpClient`. The complexity of `IHttpClientFactory.CreateClient` is handled automatically by Moq, once AutoMoq is configured accordingly.
 
 ```csharp
 [AttributeUsage(AttributeTargets.Method)]
