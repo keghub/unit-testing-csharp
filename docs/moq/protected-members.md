@@ -32,7 +32,7 @@ The `Protected` construct offers helpers to configure members via their name.
 ```csharp
 mock.Protected()
     .Setup("Step1")
-    .Callback(() => Debug.WriteLine("Step1"));
+    .Callback(() => TestContext.Progress.Writeline("Step1"));
 ```
 
 Parameters can be specified directly or via argument matching: unlike normal methods, developers should use `ItExpr` instead of `It`.
@@ -40,7 +40,7 @@ Parameters can be specified directly or via argument matching: unlike normal met
 ```csharp
 mock.Protected()
     .Setup("Step2", ItExpr.IsAny<string>())
-    .Callback((string value) => Debug.WriteLine($"Step2: {value}"));
+    .Callback((string value) => TestContext.Progress.Writeline($"Step2: {value}"));
 ```
 
 Unable to rely on static typing, Moq requires explicit typing when configuring properties.
@@ -52,7 +52,7 @@ mock.Protected()
 
 mock.Protected()
     .SetupSet<int>("Count", ItExpr.IsAny<int>())
-    .Callback((int value) => Debug.WriteLine($"Count set to {value}"));
+    .Callback((int value) => TestContext.Progress.Writeline($"Count set to {value}"));
 ```
 
 ## Configuring members using a mapping type
@@ -76,7 +76,7 @@ Once this type is declared, it's possible to use more comfortable methods to con
 mock.Protected()
     .As<IServiceBaseMapping>()
     .Setup(p => p.Step1())
-    .Callback(() => Debug.WriteLine("Step1"));
+    .Callback(() => TestContext.Progress.Writeline("Step1"));
 ```
 
 Parameters can be defined using `It` as usual.
@@ -85,7 +85,7 @@ Parameters can be defined using `It` as usual.
 mock.Protected()
     .As<IServiceBaseMapping>()
     .Setup(p => p.Step2(It.IsAny<string>()))
-    .Callback((string value) => Debug.WriteLine($"Step2: {value}"));
+    .Callback((string value) => TestContext.Progress.Writeline($"Step2: {value}"));
 ```
 
 Also properties are more comfortable to configure when using a mapping type
