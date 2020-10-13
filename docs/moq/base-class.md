@@ -16,7 +16,7 @@ public class Person
 
     public string Name { get; }
 
-    public virtual void Greet() => Debug.WriteLine($"Hello, I'm {Name}.");
+    public virtual void Greet() => TestContext.Progress.Writeline($"Hello, I'm {Name}.");
 }
 ```
 

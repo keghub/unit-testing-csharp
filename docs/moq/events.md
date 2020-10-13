@@ -47,7 +47,7 @@ var service = mock.Object;
 We then attach an event handler to the event exposed by the interface
 
 ```csharp
-service.Sent += (object sender, MessageEventArgs args) => Debug.WriteLine(args.Message);
+service.Sent += (object sender, MessageEventArgs args) => TestContext.Progress.Writeline(args.Message);
 ```
 
 Finally, we invoke the `Send` method by passing any string.

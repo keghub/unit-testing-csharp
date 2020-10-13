@@ -26,10 +26,10 @@ using NUnit.Framework;
 public class RootFixtureSetup
 {
     [OneTimeSetUp]
-    public void OneTimeSetUp() => Debug.WriteLine("RootFixtureSetup:OneTimeSetUp");
+    public void OneTimeSetUp() => TestContext.Progress.Writeline("RootFixtureSetup:OneTimeSetUp");
 
     [OneTimeTearDown]
-    public void OneTimeTearDown() => Debug.WriteLine("RootFixtureSetup:OneTimeTearDown");
+    public void OneTimeTearDown() => TestContext.Progress.Writeline("RootFixtureSetup:OneTimeTearDown");
 }
 
 namespace TestLifeCycle
@@ -38,34 +38,34 @@ namespace TestLifeCycle
     public class FixtureSetup
     {
         [OneTimeSetUp]
-        public void OneTimeSetUp() => Debug.WriteLine("FixtureSetup:OneTimeSetUp");
+        public void OneTimeSetUp() => TestContext.Progress.Writeline("FixtureSetup:OneTimeSetUp");
 
         [OneTimeTearDown]
-        public void OneTimeTearDown() => Debug.WriteLine("FixtureSetup:OneTimeTearDown");
+        public void OneTimeTearDown() => TestContext.Progress.Writeline("FixtureSetup:OneTimeTearDown");
     }
 
     [TestFixture]
     public class Tests
     {
         [OneTimeSetUp]
-        public void OneTimeSetUp() => Debug.WriteLine("Tests:OneTimeSetUp");
+        public void OneTimeSetUp() => TestContext.Progress.Writeline("Tests:OneTimeSetUp");
 
         [SetUp]
-        public void Setup() => Debug.WriteLine("Tests:SetUp");
+        public void Setup() => TestContext.Progress.Writeline("Tests:SetUp");
 
-        public Tests() => Debug.WriteLine("Tests:Constructor");
-
-        [Test]
-        public void Test1() => Debug.WriteLine("Tests:Test1");
+        public Tests() => TestContext.Progress.Writeline("Tests:Constructor");
 
         [Test]
-        public void Test2() => Debug.WriteLine("Tests:Test2");
+        public void Test1() => TestContext.Progress.Writeline("Tests:Test1");
+
+        [Test]
+        public void Test2() => TestContext.Progress.Writeline("Tests:Test2");
 
         [TearDown]
-        public void TearDown() => Debug.WriteLine("Tests:TearDown");
+        public void TearDown() => TestContext.Progress.Writeline("Tests:TearDown");
 
         [OneTimeTearDown]
-        public void OneTimeTearDown() => Debug.WriteLine("Tests:OneTimeTearDown");
+        public void OneTimeTearDown() => TestContext.Progress.Writeline("Tests:OneTimeTearDown");
     }
 }
 ```

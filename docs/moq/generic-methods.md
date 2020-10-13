@@ -17,7 +17,7 @@ Like for configuring methods by accepting any parameters, methods can be configu
 
 ```csharp
 mock.Setup(p => p.DoSomething(It.IsAny<It.IsAnyType>()))
-    .Callback((object value) => Debug.WriteLine($"DoSomething: {value}"));
+    .Callback((object value) => TestContext.Progress.Writeline($"DoSomething: {value}"));
 ```
 
 ## Setting expectations on incoming type parameter
@@ -26,7 +26,7 @@ Sometimes, the configuration needs to be more specific than what is allowed from
 
 ```csharp
 mock.Setup(p => p.DoSomething(It.IsAny<It.IsSubtype<IList<string>>>()))
-    .Callback((IList<string> items) => Debug.WriteLine($"Received list of {items.Count} strings"));
+    .Callback((IList<string> items) => TestContext.Progress.Writeline($"Received list of {items.Count} strings"));
 
 mock.Setup(p => p.DoSomething(It.IsAny<It.IsSubtype<IList<int>>>()))
     .Throws<ArgumentException>();
