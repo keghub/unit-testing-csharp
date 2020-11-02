@@ -1,0 +1,9 @@
+*                   			@emgdev/reviewers
+*.cake              			@emgdev/devops
+.dockerignore       			@emgdev/devops
+Dockerfile          			@emgdev/devops
+package.json        			@emgdev/devops
+package-lock.json   			@emgdev/devops
+azure-pipelines.yml 			@emgdev/devops
+task-execution-role.json		@emgdev/devops
+.github/            			@emgdev/admins
