@@ -14,7 +14,7 @@ var person = fixture.Create<Person>();
 Assert.That(person.FirstName, Is.EqualTo("John"));
 ```
 
-These type-wide customizations can be overridden by customizing the object creation via `Build<T>`.
+These type-wide customizations can be overridden by customizing the object creation via `Build<T>`. In this case, the customization is totally replaced.
 
 ```csharp
 var fixture = new Fixture();
@@ -27,7 +27,7 @@ var person = fixture.Build<Person>()
                     .Create();
 
 Assert.That(person.FirstName, Is.EqualTo("Sam"));
-Assert.That(person.LastName, Is.EqualTo("Smith"));
+Assert.That(person.LastName, Is.Not.EqualTo("Smith"));
 ```
 
 ## `Register`
